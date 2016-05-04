@@ -1,0 +1,38 @@
+h1 #headertag {
+
+    text-align: center;
+
+}
+
+.meal-details-body{
+
+    text-align: right;
+}
+
+
+
+div.text {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 1.25em;
+}
+
+div.text label {
+    margin: 0;
+    padding: 0;
+    display: block;
+    font-size: 100%;
+    padding-top: .1em;
+    padding-right: .25em;
+    width: 10em;
+    text-align: right;
+    float: left;
+}
+
+div.text input,
+div.text textarea {
+    margin: 0;
+    padding: 0;
+    display: block;
+    font-size: 100%;
+}
