@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <title>WaitStaffCalculator</title>
     <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="css/style.css"/>
 </head>
-<body>
+<body ng-app='myApp'>
 
-    <div class="container">
+    <div class="container" ng-controller='myCtrl'>
 
         <div class='jumbotron'>
             <h1 id='headertag' style="text-align: center">WaitStaff Calculator</h1>
@@ -18,29 +18,31 @@
 
             <div class="col-md-6">
                 <!--draw the meal calculator panel-->
+                <form name="userform">
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Enter the Meal details</h3></div>
                     <div class="panel-body">
-                        <div class="text"><label>Base Meal Price : $ </label><input type="text"/></div>
-                        <div class="text"><label>Tax Rate : % </label><input type="text"/></div>
-                        <div class="text"><label>Tip percentage : % </label><input type="text"/></div>
+                        <div class="text"><label>Base Meal Price : $ </label><input type="text" ng-model="base_meal_price"/></div>
+                        <div class="text"><label>Tax Rate : % </label><input type="text" ng-model="tax_rate"/></div>
+                        <div class="text"><label>Tip percentage : % </label><input type="text" ng-model="tip_percentage"/></div>
 
-                        <input style="margin-left:10em; margin-top:13em" type="submit" value="Submit"/>
-                        <input type="submit" value="cancel"/>
+                        <input style="margin-left:10em; margin-top:13em" type="submit" value="Submit" ng-click="submit()"/>
+                        <input type="submit" value="cancel" ng-click="cancel()"/>
                     </div>
                 </div>
-
+                </form>
             </div>
+
             <div class="col-md-1"></div>
+
             <div class="col-md-5">
                 <!--customer charges-->
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Customer Charges</h3></div>
                     <div class="panel-body">
-                        <div class="text"><label>SubTotal : </label><input type="text" disabled="true"/></div>
-                        <div class="text"><label>Tip : </label><input type="text" disabled="true"/></div>
-                        <hr/>
-                        <div class="text"><label>Total : </label><input type="text" disabled="true"/></div>
+                        <div class="text"><label>SubTotal : </label><input type="text" disabled="true" ng-model="subtotal"/></div>
+                        <div class="text"><label>Tip : </label><input type="text" disabled="true" ng-model="tip"/></div>
+                        <div class="text"><label>Total : </label><input type="text" disabled="true" ng-model="total"/></div>
 
                     </div>
                 </div>
@@ -49,16 +51,13 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>My Earnings info</h3></div>
                     <div class="panel-body">
-                        <div class="text"><label>Tip Total : </label><input type="text" disabled="true"/></div>
-                        <div class="text"><label>Meal Count : </label><input type="text" disabled="true"/></div>
-                        <div class="text"><label>Average Meal Tip: </label><input type="text" disabled="true"/></div>
-
+                        <div class="text"><label>Tip Total : </label><input type="text" disabled="true" ng-model="tip_total"/></div>
+                        <div class="text"><label>Meal Count : </label><input type="text" disabled="true" ng-model="meal_count"/></div>
+                        <div class="text"><label>Average Meal Tip: </label><input type="text" disabled="true" ng-model="average_meal_tip"/></div>
                     </div>
                 </div>
-
+                <input type="submit" value="Reset" ng-click="reset()"/>
             </div>
-
-
         </div>
     </div>
 
@@ -66,6 +65,7 @@
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 
 </body>
 </html>
