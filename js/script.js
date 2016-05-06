@@ -1,10 +1,10 @@
 angular.module('myApp',['ngMessages'])
     .controller('WaitStaffController',['$scope', function($scope){
 
-        $scope.TipTotal = 0;
-        $scope.MealCount = 0;
-        $scope.AverageMealPrice = 0;
-        $scope.TipTotal = 0;
+        $scope.TipTotal = null;
+        $scope.MealCount = null;
+        $scope.AverageMealTip = null;
+        $scope.TipTotal = null;
         $scope.submit = function() {
             $scope.UserForm.$submitted = true;
             var base_meal_price = Number($scope.BaseMealPrice);
@@ -14,9 +14,9 @@ angular.module('myApp',['ngMessages'])
             var tip = Number($scope.TipPercentage/100) * subtotal ;
             $scope.Tip = tip;
             $scope.Total = subtotal + tip;
-            $scope.TipTotal = $scope.tip_total + tip;
-            $scope.MealCount = $scope.meal_count+1;
-            $scope.AverageMealPrice = $scope.tip_total/$scope.meal_count;
+            $scope.TipTotal = $scope.TipTotal + tip;
+            $scope.MealCount = $scope.MealCount+1;
+            $scope.AverageMealTip = $scope.TipTotal/$scope.MealCount;
         }
 
         $scope.reset = function() {
