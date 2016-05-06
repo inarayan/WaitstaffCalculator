@@ -8,52 +8,64 @@
 </head>
 <body ng-app='myApp'>
 
-    <div class="container" ng-controller='myCtrl'>
+    <div class="container" ng-controller='WaitStaffController'>
 
         <div class='jumbotron'>
             <h1 id='headertag' style="text-align: center">WaitStaff Calculator</h1>
         </div>
 
         <div class="row boxdisplay">
-
+            <!--Panel for User to enter Meal Details-->
             <div class="col-md-6">
-                <!--draw the meal calculator panel-->
-                <form name="userform">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h3>Enter the Meal details</h3></div>
-                    <div class="panel-body">
-                        <div class="text"><label>Base Meal Price : $ </label><input type="text" ng-model="base_meal_price"/></div>
-                        <div class="text"><label>Tax Rate : % </label><input type="text" ng-model="tax_rate"/></div>
-                        <div class="text"><label>Tip percentage : % </label><input type="text" ng-model="tip_percentage"/></div>
+                <form name="UserForm" novalidate>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><h3>Enter the Meal details</h3></div>
+                        <div class="panel-body">
+                            <div class="text"><label>Base Meal Price : $ </label><input type="number" name="BaseMealPrice" ng-model="BaseMealPrice" required ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"/>
+                                <div ng-if="UserForm.$submitted" ng-messages="UserForm.BaseMealPrice.$error">
+                                    <span class="error alert-danger" ng-message="required">BaseMeal Price is required!</span>
+                                    <span class="error alert-danger" ng-message="pattern">BaseMeal Price is required in correct format!!</span>
+                                </div>
+                            </div>
+                            <div class="text"><label>Tax Rate : % </label><input type="number" name="TaxRate" ng-model="TaxRate" required ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"/>
+                                <div ng-if="UserForm.$submitted" ng-messages="UserForm.TaxRate.$error">
+                                    <span class="error alert-danger" ng-message="required">Tax percentage is required!</span>
+                                    <span class="error alert-danger" ng-message="pattern">Tax Percentage is required in correct format!!</span>
+                                </div>
+                            </div>
+                            <div class="text"><label>Tip percentage : % </label><input type="number" name="TipPercentage" ng-model="TipPercentage" required ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"/>
+                                <div ng-if="UserForm.$submitted" ng-messages="UserForm.TipPercentage.$error">
+                                    <span class="error alert-danger" ng-message="required">Tip  is required!</span>
+                                    <span class="error alert-danger" ng-message="pattern">Tip  is required in correct format!!</span>
+                                </div>
+                            </div>
 
-                        <input style="margin-left:10em; margin-top:13em" type="submit" value="Submit" ng-click="submit()"/>
-                        <input type="submit" value="cancel" ng-click="cancel()"/>
+                            <input style="margin-left:10em; margin-top:13em" type="button" value="Submit" ng-click="submit()"/>
+                            <input type="button" value="cancel" ng-click="cancel()"/>
+                        </div>
                     </div>
-                </div>
                 </form>
             </div>
 
             <div class="col-md-1"></div>
 
             <div class="col-md-5">
-                <!--customer charges-->
+                <!--Panel for displaying calculated customer charges-->
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Customer Charges</h3></div>
                     <div class="panel-body">
-                        <div class="text"><label>SubTotal : </label><input type="text" disabled="true" ng-model="subtotal"/></div>
-                        <div class="text"><label>Tip : </label><input type="text" disabled="true" ng-model="tip"/></div>
-                        <div class="text"><label>Total : </label><input type="text" disabled="true" ng-model="total"/></div>
-
+                        <div class="text"><label>SubTotal : </label><input type="text" disabled="true" ng-model="SubTotal"/></div>
+                        <div class="text"><label>Tip : </label><input type="text" disabled="true" ng-model="Tip"/></div>
+                        <div class="text"><label>Total : </label><input type="text" disabled="true" ng-model="Total"/></div>
                     </div>
                 </div>
-
-                <!--My Earnings info-->
+                <!--Panel for displaying My Earnings info-->
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>My Earnings info</h3></div>
                     <div class="panel-body">
-                        <div class="text"><label>Tip Total : </label><input type="text" disabled="true" ng-model="tip_total"/></div>
-                        <div class="text"><label>Meal Count : </label><input type="text" disabled="true" ng-model="meal_count"/></div>
-                        <div class="text"><label>Average Meal Tip: </label><input type="text" disabled="true" ng-model="average_meal_tip"/></div>
+                        <div class="text"><label>Tip Total : </label><input type="text" disabled="true" ng-model="TipTotal"/></div>
+                        <div class="text"><label>Meal Count : </label><input type="text" disabled="true" ng-model="MealCount"/></div>
+                        <div class="text"><label>Average Meal Tip: </label><input type="text" disabled="true" ng-model="AverageMealTip"/></div>
                     </div>
                 </div>
                 <input type="submit" value="Reset" ng-click="reset()"/>
@@ -65,6 +77,7 @@
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-messages/angular-messages.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 
 </body>
